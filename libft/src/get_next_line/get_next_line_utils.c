@@ -75,7 +75,7 @@ size_t ft_strlen_gnl(const char *str)
  * @return char* A pointer to the first occurrence of 'tofind' in 'str',
  *               or NULL if not found.
  */
-char *ft_strchr(const char *str, int tofind)
+char *ft_strchr_gnl(const char *str, int tofind)
 {
     while (*str && *str != (char)tofind)
         str++;
@@ -97,7 +97,7 @@ char *ft_strchr(const char *str, int tofind)
  * @param len The maximum length of the substring.
  * @return char* The allocated substring, or NULL if allocation fails.
  */
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_substr_gnl(char const *s, unsigned int start, size_t len)
 {
     char    *subs;
     size_t  i;

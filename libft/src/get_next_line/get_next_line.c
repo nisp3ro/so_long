@@ -33,7 +33,7 @@ char *ft_subs_line_from_save(char *save)
     char *ptr;
     int len;
 
-    ptr = ft_strchr(save, '\n');
+    ptr = ft_strchr_gnl(save, '\n');
     if (!ptr)
     {
         newsave = NULL;
@@ -43,7 +43,7 @@ char *ft_subs_line_from_save(char *save)
         len = (ptr - save) + 1;
     if (!save[len])
         return (ft_free(&save));
-    newsave = ft_substr(save, len, ft_strlen_gnl(save) - len);
+    newsave = ft_substr_gnl(save, len, ft_strlen_gnl(save) - len);
     ft_free(&save);
     if (!newsave)
         return (NULL);
@@ -65,9 +65,9 @@ char *ft_get_line(char *save)
     char *ptr;
     int len;
 
-    ptr = ft_strchr(save, '\n');
+    ptr = ft_strchr_gnl(save, '\n');
     len = (ptr - save) + 1;
-    line = ft_substr(save, 0, len);
+    line = ft_substr_gnl(save, 0, len);
     if (!line)
         return (NULL);
     return (line);
@@ -94,7 +94,7 @@ char *ft_read_till_n(int fd, char *save)
         return (ft_free(&save));
     buffer[0] = '\0';
     /* Loop until a newline is encountered in the buffer */
-    while (readed > 0 && !ft_strchr(buffer, '\n'))
+    while (readed > 0 && !ft_strchr_gnl(buffer, '\n'))
     {
         readed = read(fd, buffer, BUFFER_SIZE);
         if (readed > 0)
@@ -126,7 +126,7 @@ char *get_next_line(int fd)
 
     if (fd < 0)
         return (NULL);
-    if ((save && !ft_strchr(save, '\n')) || !save)
+    if ((save && !ft_strchr_gnl(save, '\n')) || !save)
         save = ft_read_till_n(fd, save);
     if (!save)
         return (NULL);
